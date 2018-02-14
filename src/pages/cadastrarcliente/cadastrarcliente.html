@@ -1,0 +1,63 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Realizar cadastro</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+
+  <form (submit)="realizarCadastro()">
+    <h4>Preencha os campos abaixo para realizar cadastro</h4>
+
+    <ion-item>
+      <ion-label stacked>CPF</ion-label>
+      <ion-input [(ngModel)]="cpf" name="cpf" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Nome</ion-label>
+      <ion-input [(ngModel)]="nome" name="nome" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Endereço completo</ion-label>
+      <ion-textarea [(ngModel)]="endereco" name="endereco" type="text"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Estado</ion-label>
+      <ion-select [(ngModel)]="estado" name="estado">
+        <ion-option *ngFor="let estado of listaEstados">{{estado}}</ion-option>
+
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Município</ion-label>
+      <ion-input [(ngModel)]="municipio" name="municipio" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Telefone</ion-label>
+      <ion-input [(ngModel)]="telefone" name="telefone" type="telefone"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>E-mail</ion-label>
+      <ion-input [(ngModel)]="email" name="email" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Senha</ion-label>
+      <ion-input [(ngModel)]="senha" name="senha" type="password"></ion-input>
+    </ion-item>
+
+    <button ion-button block type="submit">Cadastrar cliente</button>
+
+  </form>
+
+</ion-content>
