@@ -7,5 +7,6 @@ export class Cliente {
         public municipio: string,
         public estado: string,
         public telefone: string,
-        public email: string) {}
+        public email: string,
+        public senha: string) { }
 }

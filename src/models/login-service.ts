@@ -6,22 +6,33 @@ import { Cliente } from './cliente';
 export class LoginService {
     private _clienteLogado: Cliente;
 
-    constructor(private _http: Http) {}
+    constructor(private _http: Http) { }
 
     public efetuarLogin(email: string, senha: string) {
         let url = `http://gperroni-001-site1.gtempurl.com/api/Login/Autenticar?email=${email}&senha=${senha}`;
         // let url = `http://localhost:58666/api/Login/Autenticar?email=${email}&senha=${senha}`;
-        
+
         return this._http
             .get(url)
             .map(res => res.json())
             .toPromise()
             .then(resultado => {
                 let cliente = new Cliente(resultado.Nome, resultado.Cpf, resultado.Endereco, resultado.Municipio,
-                resultado.Estado, resultado.Telefone, resultado.Email);
+                    resultado.Estado, resultado.Telefone, resultado.Email, resultado.Senha);
                 this._clienteLogado = cliente;
                 return cliente;
             });
+    }
+
+    public salvarCliente(cliente : Cliente) {
+        let url = `http://gperroni-001-site1.gtempurl.com/api/Cliente?CriarCadastro`;
+        // let url = `http://localhost:58666/api/Login/Autenticar?email=${email}&senha=${senha}`;
+
+        this._http.
+        post(url, cliente)
+        .map(res => res.json())
+        .subscribe(resultado => console.log(resultado),
+            err => console.log(err));
     }
 
     getUsuarioLogado() {

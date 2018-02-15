@@ -5,9 +5,6 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 import { LoginPage } from '../pages/login/login';
 import { CadastrarClientePage } from '../pages/cadastrarcliente/cadastrarcliente';
 
-import { LoginService } from '../models/login-service';
-
-
 @Component({
   templateUrl: 'app.html'
 })
@@ -25,15 +22,12 @@ export class MyApp {
     { titulo: 'Ambos', componente: CadastrarClientePage }
   ]
 
-  constructor(platform: Platform,
-    private _service: LoginService) {
+  constructor(platform: Platform) {
       platform.ready().then(() => {
         StatusBar.styleDefault();
         Splashscreen.hide();
 
     });
-
-    //  this.usuarioLogado = _service.getUsuarioLogado() != null;
   }
 
   navegarPara(pagina): void {
