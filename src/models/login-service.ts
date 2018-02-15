@@ -24,16 +24,6 @@ export class LoginService {
             });
     }
 
-    public salvarCliente(cliente : Cliente) {
-        let url = `http://gperroni-001-site1.gtempurl.com/api/Cliente?CriarCadastro`;
-        // let url = `http://localhost:58666/api/Login/Autenticar?email=${email}&senha=${senha}`;
-
-        this._http.
-        post(url, cliente)
-        .map(res => res.json())
-        .subscribe(resultado => console.log(resultado),
-            err => console.log(err));
-    }
 
     getUsuarioLogado() {
         return this._clienteLogado;

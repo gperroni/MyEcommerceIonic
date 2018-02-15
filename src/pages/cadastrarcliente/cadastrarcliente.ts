@@ -35,16 +35,23 @@ export class CadastrarClientePage {
     }
 
     this._service
-    .salvarCliente(this.cliente)
-    .then(cliente => {
-        this.navCtrl.push(HomePage)
-    })
-    .catch(() => {
-      this._alertCtrl.create({
-        subTitle: 'Email ou senha inválidos. Por favor, verifique e tente novamente',
-        buttons: [{ text: 'Ok'}]
-      }).present();
-    });
+      .salvarCliente(this.cliente)
+      .then(cliente => {
+        this._alertCtrl.create({
+          subTitle: `Cliente ${cliente.nome} cadastro com sucesso`,
+          buttons: [{ text: 'Ok' }]
+        }).present();
+        
+        return;
+      })
+      .catch(response => {
+        this._alertCtrl.create({
+          title: 'Atenção',
+          subTitle: response.json(),
+          buttons: [{ text: 'Ok' }]
+        }).present();
+        return;
+      });
 
   }
 
