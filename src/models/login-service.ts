@@ -28,4 +28,8 @@ export class LoginService {
     getUsuarioLogado() {
         return this._clienteLogado;
     }
+
+    setUsuarioLogado(clienteLogado : Cliente){
+        this._clienteLogado = clienteLogado;
+    }
 }

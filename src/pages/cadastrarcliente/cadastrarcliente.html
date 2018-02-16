@@ -14,7 +14,7 @@
     <h4>Preencha os campos abaixo para realizar cadastro</h4>
 
     <ion-item>
-      <ion-label stacked>CPF</ion-label>
+      <ion-label stacked>CPF (somente números)</ion-label>
       <ion-input [(ngModel)]="cliente.cpf" name="cpf" type="number"></ion-input>
     </ion-item>
 
@@ -43,7 +43,7 @@
 
     <ion-item>
       <ion-label stacked>Telefone</ion-label>
-      <ion-input [(ngModel)]="cliente.telefone" name="telefone" type="number"></ion-input>
+      <ion-input [(ngModel)]="cliente.telefone" name="telefone" type="text"></ion-input>
     </ion-item>
 
     <ion-item>

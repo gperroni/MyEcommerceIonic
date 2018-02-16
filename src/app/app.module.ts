@@ -7,6 +7,8 @@ import 'rxjs/add/operator/toPromise';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { CadastrarClientePage } from '../pages/cadastrarcliente/cadastrarcliente';
+import { VisualizarClientePage } from '../pages/visualizarcliente/visualizarcliente';
+import { AlterarClientePage } from '../pages/alterarcliente/alterarcliente';
 
 import { LoginService } from '../models/login-service';
 import { ClienteService } from '../models/cliente-service';
@@ -19,7 +21,9 @@ import { MenuFilterPipe } from '../models/menu-filter.pipe.ts';
     HomePage,
     LoginPage,
     CadastrarClientePage,
-    MenuFilterPipe
+    MenuFilterPipe,
+    VisualizarClientePage,
+    AlterarClientePage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -29,7 +33,9 @@ import { MenuFilterPipe } from '../models/menu-filter.pipe.ts';
     MyApp,
     HomePage,
     LoginPage,
-    CadastrarClientePage
+    CadastrarClientePage,
+    VisualizarClientePage,
+    AlterarClientePage
   ],
   providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler },
     LoginService,

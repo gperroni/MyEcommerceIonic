@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { LoginService } from '../../models/login-service';
+import { VisualizarClientePage } from '../visualizarcliente/visualizarcliente';
 
 @Component({
   selector: 'page-login',
@@ -13,34 +14,41 @@ export class LoginPage {
   public email: string;
   public senha: string;
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private _alertCtrl: AlertController,
-    private _service: LoginService) {}
+    private _loadingCtrl: LoadingController,
+    private _service: LoginService) { }
 
-  efetuarLogin(){
-
+  efetuarLogin() {
     // Valida se email e senha foram preenchidos;
-    if (!this.email || !this.senha){
+    if (!this.email || !this.senha) {
       this._alertCtrl.create({
         subTitle: 'Preencha todos os campos',
-        buttons: [{ text: 'Ok'}]
+        buttons: [{ text: 'Ok' }]
       }).present();
 
       return;
     }
 
-    this._service
-    .efetuarLogin(this.email, this.senha)
-    .then(cliente => {
-        this.navCtrl.setRoot(HomePage)
+    let loader = this._loadingCtrl.create({
+      content: 'Efetuando login...'
     })
-    .catch(() => {
-      this._alertCtrl.create({
+    loader.present();
+
+    this._service
+      .efetuarLogin(this.email, this.senha)
+      .then(cliente => {
+        loader.dismiss();
+        this.navCtrl.setRoot(VisualizarClientePage)
+      })
+      .catch(() => {
+        loader.dismiss();
+        this._alertCtrl.create({
         subTitle: 'Email ou senha inválidos. Por favor, verifique e tente novamente',
-        buttons: [{ text: 'Ok'}]
-      }).present();
-    });
+          buttons: [{ text: 'Ok' }]
+        }).present();
+      });
   }
 
 }

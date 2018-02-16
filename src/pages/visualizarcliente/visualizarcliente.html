@@ -1,0 +1,46 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Visualizar cadastro</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+
+    <h4>Meus dados</h4>
+
+    <ion-item>
+      <p><b>CPF:</b> {{this.savedCliente.cpf}}</p>
+    </ion-item>
+
+    <ion-item>
+      <p><b>Nome:</b> {{this.savedCliente.nome}}</p>
+    </ion-item>
+
+    <ion-item>
+      <p><b>Endereço completo:</b> {{this.savedCliente.endereco}}</p>
+    </ion-item>
+
+    <ion-item>
+      <p><b>Estado:</b> {{this.savedCliente.estado}} </p>
+    </ion-item>
+
+    <ion-item>
+      <p><b>Município:</b> {{this.savedCliente.municipio}}</p>
+    </ion-item>
+
+    <ion-item>
+      <p><b>Telefone:</b> {{this.savedCliente.telefone}}</p>
+    </ion-item>
+
+    <ion-item>
+      <p><b>E-mail:</b> {{this.savedCliente.email}}</p>
+    </ion-item>
+
+    <button ion-button style="float: left;" (click)="alterarCadastro()">Alterar</button>
+    <button ion-button style="float: right;"(click)="confirmacaoExclusao()" >Excluir cadastro</button>
+    
+</ion-content>

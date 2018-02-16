@@ -1,49 +1,52 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { Cliente } from '../../models/cliente';
+import { LoginService } from '../../models/login-service';
 import { ClienteService } from '../../models/cliente-service';
-import { LoginPage } from '../login/login';
+import { VisualizarClientePage } from '../visualizarcliente/visualizarcliente';
+
 
 @Component({
-  selector: 'page-cadastrarcliente',
-  templateUrl: 'cadastrarcliente.html'
+  selector: 'page-alterarcliente',
+  templateUrl: 'alterarcliente.html'
 })
-export class CadastrarClientePage {
+export class AlterarClientePage {
 
-  public cliente = new Cliente("", "", "", "", "", "", "", "");
+  public cliente: Cliente;
 
   listaEstados: String[];
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private _alertCtrl: AlertController,
+    private _loginService: LoginService,
     private _loadingCtrl: LoadingController,
-    private _service: ClienteService) {
-    this.listaEstados = _service.listaEstados;
+    private _clienteService: ClienteService) {
+
+    var savedCliente = _loginService.getUsuarioLogado();
+    this.cliente = new Cliente(savedCliente.nome, savedCliente.cpf, savedCliente.endereco,
+      savedCliente.municipio, savedCliente.estado, savedCliente.telefone, savedCliente.email, savedCliente.senha);
+    this.listaEstados = _clienteService.listaEstados;
   }
 
-  realizarCadastro() {
-    if (this.cliente.cpf.indexOf('.') >= 0 || this.cliente.cpf.indexOf('-') >= 0) {
-      this.createAndShowAlertControl('Atenção', 'CPF deve ser somente números', null);
-      return;
-    }
-
-
+  alterarCadastro() {
     if (!this.dadosValidos()) {
       this.createAndShowAlertControl('Atenção', 'Preencha todos os campos', null);
       return;
     }
 
     let loader = this._loadingCtrl.create({
-      content: 'Criando cadastro'
+      content: 'Salvando alterações'
     })
     loader.present();
 
-    this._service
-      .salvarCliente(this.cliente)
-      .then(cliente => {
+    this._clienteService
+      .alterarCliente(this.cliente)
+      .then(savedCliente => {
         loader.dismiss();
-        this.createAndShowAlertControl('', `Cliente '${cliente.nome}' cadastro com sucesso. Efetue login para poder realizar um pedido.`, () => this.navCtrl.setRoot(LoginPage));
+        this._loginService.setUsuarioLogado(savedCliente);
+
+        this.createAndShowAlertControl('', `Cliente '${savedCliente.nome}' alterado com sucesso`, () => this.navCtrl.push(VisualizarClientePage));
       })
       .catch(response => {
         loader.dismiss();
@@ -64,4 +67,5 @@ export class CadastrarClientePage {
       buttons: [{ text: 'Ok', handler: handler }]
     }).present();
   }
+
 }

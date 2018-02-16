@@ -4,9 +4,12 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { LoginPage } from '../pages/login/login';
 import { CadastrarClientePage } from '../pages/cadastrarcliente/cadastrarcliente';
+import { VisualizarClientePage } from '../pages/visualizarcliente/visualizarcliente';
+
+import { LoginService } from '../models/login-service';
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
 })
 
 export class MyApp {
@@ -17,12 +20,12 @@ export class MyApp {
   rootPage = LoginPage;
 
   public paginas = [
-    { titulo: 'Logado', componente: CadastrarClientePage, logado: true },
+    { titulo: 'Visualizar cadastro', componente: VisualizarClientePage, logado: true },
     { titulo: 'Realizar cadastro', componente: CadastrarClientePage, logado: false },
-    { titulo: 'Ambos', componente: CadastrarClientePage }
+    { titulo: 'Logoff', logado: true }
   ]
 
-  constructor(platform: Platform) {
+  constructor(platform: Platform, private _service: LoginService) {
       platform.ready().then(() => {
         StatusBar.styleDefault();
         Splashscreen.hide();
@@ -31,6 +34,16 @@ export class MyApp {
   }
 
   navegarPara(pagina): void {
+    if (!pagina.componente){
+      this.efetuarLogoff();
+      return;
+    }
+
     this.nav.push(pagina.componente);
+  }
+
+  efetuarLogoff(){
+    this._service.setUsuarioLogado(null);
+    this.nav.setRoot(LoginPage);
   }
 }
