@@ -37,17 +37,18 @@ export class LoginPage {
 
     this._service
       .efetuarLogin(this.email, this.senha)
-      .then(cliente => {
+      .then(() => {
         loader.dismiss();
         this.navCtrl.setRoot(VisualizarClientePage)
       })
       .catch(() => {
         loader.dismiss();
         this._alertCtrl.create({
-        subTitle: 'Email ou senha inválidos. Por favor, verifique e tente novamente',
+          subTitle: 'Email ou senha inválidos. Por favor, verifique e tente novamente',
           buttons: [{ text: 'Ok' }]
         }).present();
       });
+
   }
 
 }

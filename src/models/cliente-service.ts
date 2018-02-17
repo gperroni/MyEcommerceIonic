@@ -53,9 +53,9 @@ export class ClienteService {
             });
     }
 
-    public exibirCliente(cpf: string) {
+    public buscarCliente(cpf: string) {
         let showUrl = this.url + cpf;
-
+        
         return this._http
             .get(showUrl)
             .map(res => res.json())
