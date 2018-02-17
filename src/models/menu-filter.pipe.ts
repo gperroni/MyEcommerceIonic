@@ -7,7 +7,6 @@ import { LoginService } from '../models/login-service';
   pure: false
 })
 export class MenuFilterPipe implements PipeTransform {
-  private usuarioLogado: boolean;
 
   transform(items: any[], teste: boolean): any {
     if (!items) {
