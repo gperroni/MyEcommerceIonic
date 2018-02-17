@@ -29,7 +29,7 @@ export class VisualizarClientePage {
 
   confirmacaoExclusao() {
     this._alertCtrl.create({
-      subTitle: `Deseja realmente excluir cadastr?`,
+      subTitle: `Deseja realmente excluir cadastro?`,
       buttons: [{ text: 'Sim', handler: () => this.excluirCadastro() },
       { text: 'Não' }]
     }).present();

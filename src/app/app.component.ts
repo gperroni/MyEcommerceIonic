@@ -20,7 +20,7 @@ export class MyApp {
   rootPage = LoginPage;
 
   public paginas = [
-    { titulo: 'Visualizar cadastro', componente: VisualizarClientePage, logado: true },
+    { titulo: 'Meus dados', componente: VisualizarClientePage, logado: true },
     { titulo: 'Realizar cadastro', componente: CadastrarClientePage, logado: false },
     { titulo: 'Logoff', logado: true }
   ]

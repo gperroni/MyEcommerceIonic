@@ -2,16 +2,16 @@
 
   <ion-navbar>
     <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+      <ion-icon name="menu" id="menu"></ion-icon>
     </button>
-    <ion-title>Login</ion-title>
+    <ion-title>MyEcommerce</ion-title>
   </ion-navbar>
 
 </ion-header>
 <ion-content padding>
-
   <form (submit)="efetuarLogin()">
-    <h4>Seja bem vindo. Faça seu login no formulário abaixo:</h4>
+    <h5>Seja bem vindo. </h5>
+    <h6 align="justify">Clique no menu superior para se cadastrar ou faça seu login abaixo caso já tenha cadastro</h6>
 
     <ion-item>
       <ion-label stacked>Email</ion-label>
