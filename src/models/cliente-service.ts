@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions, Headers, Response } from '@angular/http';
+import { Http, RequestOptions, Headers } from '@angular/http';
 import { Cliente } from './cliente';
 
 @Injectable()
@@ -53,9 +53,9 @@ export class ClienteService {
             });
     }
 
-    public exibirCliente(cpf: string) {
+    public buscarCliente(cpf: string) {
         let showUrl = this.url + cpf;
-
+        
         return this._http
             .get(showUrl)
             .map(res => res.json())

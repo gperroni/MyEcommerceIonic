@@ -46,7 +46,8 @@ export class AlterarClientePage {
         loader.dismiss();
         this._loginService.setUsuarioLogado(savedCliente);
 
-        this.createAndShowAlertControl('', `Cliente '${savedCliente.nome}' alterado com sucesso`, () => this.navCtrl.push(VisualizarClientePage));
+        this.createAndShowAlertControl('', `Cliente '${savedCliente.nome}' alterado com sucesso`, 
+          () => this.navCtrl.setRoot(VisualizarClientePage));
       })
       .catch(response => {
         loader.dismiss();

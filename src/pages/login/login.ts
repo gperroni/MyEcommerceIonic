@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
-import { HomePage } from '../home/home';
 import { LoginService } from '../../models/login-service';
 import { VisualizarClientePage } from '../visualizarcliente/visualizarcliente';
 
@@ -38,17 +37,18 @@ export class LoginPage {
 
     this._service
       .efetuarLogin(this.email, this.senha)
-      .then(cliente => {
+      .then(() => {
         loader.dismiss();
         this.navCtrl.setRoot(VisualizarClientePage)
       })
       .catch(() => {
         loader.dismiss();
         this._alertCtrl.create({
-        subTitle: 'Email ou senha inválidos. Por favor, verifique e tente novamente',
+          subTitle: 'Email ou senha inválidos. Por favor, verifique e tente novamente',
           buttons: [{ text: 'Ok' }]
         }).present();
       });
+
   }
 
 }
