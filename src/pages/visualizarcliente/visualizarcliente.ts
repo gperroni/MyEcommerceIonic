@@ -20,7 +20,7 @@ export class VisualizarClientePage {
     private _serviceCliente: ClienteService,
     private _alertCtrl: AlertController,
     private _loadingCtrl: LoadingController) {
-    this.savedCliente = _serviceLogin.getUsuarioLogado();
+    this.savedCliente = _serviceLogin.getClienteLogado();
   }
 
   alterarCadastro() {
@@ -45,7 +45,7 @@ export class VisualizarClientePage {
       .excluirCliente(this.savedCliente.cpf)
       .then(() => {
         loader.dismiss();
-        this._serviceLogin.setUsuarioLogado(null);
+        this._serviceLogin.setClienteLogado(null);
 
         this._alertCtrl.create({
           title: 'Atenção',

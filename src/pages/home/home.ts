@@ -13,6 +13,6 @@ export class HomePage {
 
   constructor(public navCtrl: NavController,
     private _service: LoginService) {
-      this.cliente = _service.getUsuarioLogado();
+      this.cliente = _service.getClienteLogado();
   } 
 }

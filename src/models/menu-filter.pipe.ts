@@ -13,9 +13,9 @@ export class MenuFilterPipe implements PipeTransform {
       return items;
     }
 
-    var usuarioLogado = this._service.getUsuarioLogado() != null;
+    var clienteLogado = this._service.getClienteLogado() != null;
 
-    return usuarioLogado
+    return clienteLogado
       ? items.filter(item => item.logado == true || item.logado == null)
       : items.filter(item => item.logado == false || item.logado == null);
   }

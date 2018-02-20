@@ -23,7 +23,7 @@ export class AlterarClientePage {
     private _loadingCtrl: LoadingController,
     private _clienteService: ClienteService) {
 
-    var savedCliente = _loginService.getUsuarioLogado();
+    var savedCliente = _loginService.getClienteLogado();
     this.cliente = new Cliente(savedCliente.nome, savedCliente.cpf, savedCliente.endereco,
       savedCliente.municipio, savedCliente.estado, savedCliente.telefone, savedCliente.email, savedCliente.senha);
     this.listaEstados = _clienteService.listaEstados;
@@ -44,7 +44,7 @@ export class AlterarClientePage {
       .alterarCliente(this.cliente)
       .then(savedCliente => {
         loader.dismiss();
-        this._loginService.setUsuarioLogado(savedCliente);
+        this._loginService.setClienteLogado(savedCliente);
 
         this.createAndShowAlertControl('', `Cliente '${savedCliente.nome}' alterado com sucesso`, 
           () => this.navCtrl.setRoot(VisualizarClientePage));

@@ -9,7 +9,7 @@
 
     <ion-content padding>
         <ion-list inset>
-            <button menuClose ion-item *ngFor="let pagina of paginas | menufilter: usuarioLogado" (click)="navegarPara(pagina)" >
+            <button menuClose ion-item *ngFor="let pagina of paginas | menufilter: clienteLogado" (click)="navegarPara(pagina)" >
             {{pagina.titulo}}
           </button>
         </ion-list>
