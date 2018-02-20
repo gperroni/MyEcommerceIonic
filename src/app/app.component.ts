@@ -26,15 +26,15 @@ export class MyApp {
   ]
 
   constructor(platform: Platform, private _service: LoginService) {
-      platform.ready().then(() => {
-        StatusBar.styleDefault();
-        Splashscreen.hide();
+    platform.ready().then(() => {
+      StatusBar.styleDefault();
+      Splashscreen.hide();
 
     });
   }
 
   navegarPara(pagina): void {
-    if (!pagina.componente){
+    if (!pagina.componente) {
       this.efetuarLogoff();
       return;
     }
@@ -42,8 +42,8 @@ export class MyApp {
     this.nav.push(pagina.componente);
   }
 
-  efetuarLogoff(){
-    this._service.setUsuarioLogado(null);
+  efetuarLogoff() {
+    this._service.setClienteLogado(null);
     this.nav.setRoot(LoginPage);
   }
 }

@@ -51,7 +51,7 @@ export class AlterarClientePage {
       })
       .catch(response => {
         loader.dismiss();
-        this.createAndShowAlertControl('Atenção', response.json(), null);
+        this.createAndShowAlertControl('Atenção', response.json().Message, null);
       });
   }
 

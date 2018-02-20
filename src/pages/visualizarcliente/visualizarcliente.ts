@@ -59,7 +59,7 @@ export class VisualizarClientePage {
         loader.dismiss();
         this._alertCtrl.create({
           title: 'Atenção',
-          subTitle: "Erro na exclusão. Por favor, tente novamente",
+          subTitle: response.json().Message,
           buttons: [{ text: 'Ok' }]
         }).present();
         return;

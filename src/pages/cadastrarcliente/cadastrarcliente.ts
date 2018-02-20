@@ -43,11 +43,11 @@ export class CadastrarClientePage {
       .salvarCliente(this.cliente)
       .then(cliente => {
         loader.dismiss();
-        this.createAndShowAlertControl('', `Cliente '${cliente.nome}' cadastro com sucesso. Efetue login para poder realizar um pedido.`, () => this.navCtrl.setRoot(LoginPage));
+        this.createAndShowAlertControl('', `Cliente '${cliente.nome}' cadastro com sucesso.`, () => this.navCtrl.setRoot(LoginPage));
       })
       .catch(response => {
         loader.dismiss();
-        this.createAndShowAlertControl('Atenção', response.json(), null);
+        this.createAndShowAlertControl('Atenção', response.json().Message, null);
       });
   }
 

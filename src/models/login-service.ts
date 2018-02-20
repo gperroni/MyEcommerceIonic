@@ -22,11 +22,11 @@ export class LoginService {
     }
 
 
-    getUsuarioLogado() {
+    getClienteLogado() {
         return this._clienteLogado;
     }
 
-    setUsuarioLogado(clienteLogado: Cliente) {
+    setClienteLogado(clienteLogado: Cliente) {
         this._clienteLogado = clienteLogado;
     }
 
@@ -34,7 +34,7 @@ export class LoginService {
         return this._service
             .buscarCliente(cpf)
             .then(cliente => {
-                this.setUsuarioLogado(cliente);
+                this.setClienteLogado(cliente);
                 return cliente;
             });
     }
