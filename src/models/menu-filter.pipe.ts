@@ -8,7 +8,7 @@ import { LoginService } from '../models/login-service';
 })
 export class MenuFilterPipe implements PipeTransform {
 
-  transform(items: any[], teste: boolean): any {
+  transform(items: any[]): any {
     if (!items) {
       return items;
     }

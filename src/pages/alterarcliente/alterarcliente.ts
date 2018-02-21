@@ -29,7 +29,7 @@ export class AlterarClientePage {
     this.listaEstados = _clienteService.listaEstados;
   }
 
-  alterarCadastro() {
+  public alterarCadastro() {
     if (!this.dadosValidos()) {
       this.createAndShowAlertControl('Atenção', 'Preencha todos os campos', null);
       return;
@@ -55,13 +55,13 @@ export class AlterarClientePage {
       });
   }
 
-  dadosValidos() {
+  private dadosValidos() {
     return this.cliente.nome.trim() && this.cliente.cpf.trim() && this.cliente.endereco.trim() &&
       this.cliente.estado.trim() && this.cliente.municipio.trim() && this.cliente.telefone.trim() &&
       this.cliente.email.trim() && this.cliente.senha.trim();
   }
 
-  createAndShowAlertControl(title, subTitle, handler) {
+  private createAndShowAlertControl(title, subTitle, handler) {
     this._alertCtrl.create({
       title: title,
       subTitle: subTitle,

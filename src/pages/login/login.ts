@@ -19,7 +19,7 @@ export class LoginPage {
     private _loadingCtrl: LoadingController,
     private _service: LoginService) { }
 
-  efetuarLogin() {
+  public efetuarLogin() {
     // Valida se email e senha foram preenchidos;
     if (!this.email || !this.senha) {
       this._alertCtrl.create({

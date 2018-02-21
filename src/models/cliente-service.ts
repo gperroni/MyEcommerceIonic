@@ -12,7 +12,7 @@ export class ClienteService {
         "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"
     ];
 
-    url = 'http://gperroni-001-site1.gtempurl.com/api/Clientes/';
+    private _url = 'http://gperroni-001-site1.gtempurl.com/api/Clientes/';
 
     public salvarCliente(cliente: Cliente) {
         let headers = new Headers();
@@ -22,7 +22,7 @@ export class ClienteService {
 
         const data = JSON.stringify(cliente)
         return this._http
-            .post(this.url, data, requestOptions)
+            .post(this._url, data, requestOptions)
             .map(res => res.json())
             .toPromise()
             .then(resultado => {
@@ -33,7 +33,7 @@ export class ClienteService {
     }
 
     public alterarCliente(cliente: Cliente) {
-        let putUrl = this.url + cliente.cpf;
+        let putUrl = this._url + cliente.cpf;
 
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
@@ -54,7 +54,7 @@ export class ClienteService {
     }
 
     public buscarCliente(cpf: string) {
-        let showUrl = this.url + cpf;
+        let showUrl = this._url + cpf;
         
         return this._http
             .get(showUrl)
@@ -68,7 +68,7 @@ export class ClienteService {
     }
 
     public excluirCliente(cpf: string) {
-        let deleteUrl = this.url + cpf;
+        let deleteUrl = this._url + cpf;
 
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');

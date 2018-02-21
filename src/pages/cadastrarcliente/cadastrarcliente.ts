@@ -12,7 +12,7 @@ export class CadastrarClientePage {
 
   public cliente = new Cliente("", "", "", "", "", "", "", "");
 
-  listaEstados: String[];
+  public listaEstados: String[];
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -22,7 +22,7 @@ export class CadastrarClientePage {
     this.listaEstados = _service.listaEstados;
   }
 
-  realizarCadastro() {
+  public realizarCadastro() {
     if (this.cliente.cpf.indexOf('.') >= 0 || this.cliente.cpf.indexOf('-') >= 0) {
       this.createAndShowAlertControl('Atenção', 'CPF deve ser somente números', null);
       return;
@@ -51,13 +51,13 @@ export class CadastrarClientePage {
       });
   }
 
-  dadosValidos() {
+  private dadosValidos() {
     return this.cliente.nome.trim() && this.cliente.cpf.trim() && this.cliente.endereco.trim() &&
       this.cliente.estado.trim() && this.cliente.municipio.trim() && this.cliente.telefone.trim() &&
       this.cliente.email.trim() && this.cliente.senha.trim();
   }
 
-  createAndShowAlertControl(title, subTitle, handler) {
+  private createAndShowAlertControl(title, subTitle, handler) {
     this._alertCtrl.create({
       title: title,
       subTitle: subTitle,

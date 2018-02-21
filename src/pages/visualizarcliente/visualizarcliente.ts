@@ -23,11 +23,11 @@ export class VisualizarClientePage {
     this.savedCliente = _serviceLogin.getClienteLogado();
   }
 
-  alterarCadastro() {
+  public alterarCadastro() {
     this.navCtrl.push(AlterarClientePage);
   }
 
-  confirmacaoExclusao() {
+  public confirmacaoExclusao() {
     this._alertCtrl.create({
       subTitle: `Deseja realmente excluir cadastro?`,
       buttons: [{ text: 'Sim', handler: () => this.excluirCadastro() },
@@ -35,7 +35,7 @@ export class VisualizarClientePage {
     }).present();
   }
 
-  excluirCadastro() {
+  public excluirCadastro() {
     let loader = this._loadingCtrl.create({
       content: 'Excluindo cadastro'
     })
