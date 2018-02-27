@@ -22,15 +22,15 @@ export class LoginService {
     }
 
 
-    getClienteLogado() {
+    public getClienteLogado() {
         return this._clienteLogado;
     }
 
-    setClienteLogado(clienteLogado: Cliente) {
+    public setClienteLogado(clienteLogado: Cliente) {
         this._clienteLogado = clienteLogado;
     }
 
-    getDadosCliente(cpf: string) {
+    private getDadosCliente(cpf: string) {
         return this._service
             .buscarCliente(cpf)
             .then(cliente => {
