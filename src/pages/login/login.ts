@@ -8,6 +8,7 @@ import { VisualizarClientePage } from '../visualizarcliente/visualizarcliente';
   templateUrl: 'login.html'
 })
 
+// Classe responsável por chamar serviço de login.  
 export class LoginPage {
 
   public email: string;
@@ -19,6 +20,8 @@ export class LoginPage {
     private _loadingCtrl: LoadingController,
     private _service: LoginService) { }
 
+  // Chamado no submit do form. Busca cliente pelo e-mail e senha digitados
+  // Exibe um pop-up de erro caso não seja encontrado ou redireciona para dentro do sistema (tela de Visualização de dados)
   public efetuarLogin() {
     // Valida se email e senha foram preenchidos;
     if (!this.email || !this.senha) {
@@ -30,11 +33,13 @@ export class LoginPage {
       return;
     }
 
+    // Feedback para usuário saber que está realizando LOGIN
     let loader = this._loadingCtrl.create({
       content: 'Efetuando login...'
     })
     loader.present();
 
+    // Chama o serviço de LOGIN, responsável por fazer um GET e retornar os dados do cliente
     this._service
       .efetuarLogin(this.email, this.senha)
       .then(() => {

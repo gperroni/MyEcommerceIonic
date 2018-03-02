@@ -10,53 +10,54 @@
 </ion-header>
 <ion-content padding>
 
-  <form (submit)="alterarCadastro()">
-    <h4 align="center">Alterar cadastro</h4>
+  <!-->Ao clicar no botão SALVAR, será chamado o método alterarCadastro  <-->
+    <form (submit)="alterarCadastro()">
+      <h4 align="center">Alterar cadastro</h4>
 
-    <ion-item text-wrap>
-      <p>
-        <b>CPF:</b> {{this.cliente.cpf}}</p>
-    </ion-item>
+      <ion-item text-wrap>
+        <p>
+          <b>CPF:</b> {{this.cliente.cpf}}</p>
+      </ion-item>
 
-    <ion-item>
-      <ion-label stacked>Nome</ion-label>
-      <ion-input [(ngModel)]="this.cliente.nome" name="nome" type="text"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label stacked>Nome</ion-label>
+        <ion-input [(ngModel)]="this.cliente.nome" name="nome" type="text"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label stacked>Endereço completo</ion-label>
-      <ion-textarea [(ngModel)]="this.cliente.endereco" name="endereco" type="text"></ion-textarea>
-    </ion-item>
+      <ion-item>
+        <ion-label stacked>Endereço completo</ion-label>
+        <ion-textarea [(ngModel)]="this.cliente.endereco" name="endereco" type="text"></ion-textarea>
+      </ion-item>
 
-    <ion-item>
-      <ion-label stacked>Estado</ion-label>
-      <ion-select [(ngModel)]="this.cliente.estado" name="estado">
-        <ion-option *ngFor="let estado of listaEstados">{{estado}}</ion-option>
-      </ion-select>
-    </ion-item>
+      <ion-item>
+        <ion-label stacked>Estado</ion-label>
+        <ion-select [(ngModel)]="this.cliente.estado" name="estado">
+          <ion-option *ngFor="let estado of listaEstados">{{estado}}</ion-option>
+        </ion-select>
+      </ion-item>
 
-    <ion-item>
-      <ion-label stacked>Município</ion-label>
-      <ion-input [(ngModel)]="this.cliente.municipio" name="municipio" type="text"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label stacked>Município</ion-label>
+        <ion-input [(ngModel)]="this.cliente.municipio" name="municipio" type="text"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label stacked>Telefone</ion-label>
-      <ion-input [(ngModel)]="this.cliente.telefone" name="telefone" type="text"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label stacked>Telefone</ion-label>
+        <ion-input [(ngModel)]="this.cliente.telefone" name="telefone" type="text"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label stacked>E-mail</ion-label>
-      <ion-input [(ngModel)]="this.cliente.email" name="email" type="text"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label stacked>E-mail</ion-label>
+        <ion-input [(ngModel)]="this.cliente.email" name="email" type="text"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label stacked>Senha</ion-label>
-      <ion-input [(ngModel)]="this.cliente.senha" name="senha" type="password"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label stacked>Senha</ion-label>
+        <ion-input [(ngModel)]="this.cliente.senha" name="senha" type="password"></ion-input>
+      </ion-item>
 
-    <button ion-button block type="submit">Salvar</button>
+      <button ion-button block type="submit">Salvar</button>
 
-  </form>
+    </form>
 
 </ion-content>

@@ -17,11 +17,15 @@ export class MyApp {
   // Injeta o NAV presente em app.component.html diretamente na página  
   @ViewChild(Nav) public nav: Nav;
 
+  // Coloca como página raiz a LoginPage.
   rootPage = LoginPage;
 
+  // Array contendo as páginas do menu
+  // Cada página deverá conter seu nome, página de destino e se usuário deve ou não estar logado para visualizar o item
   public paginas = [
     { titulo: 'Meus dados', componente: VisualizarClientePage, logado: true },
     { titulo: 'Realizar cadastro', componente: CadastrarClientePage, logado: false },
+    { titulo: 'Efetuar login', componente: LoginPage, logado: false },
     { titulo: 'Logoff', logado: true }
   ]
 
@@ -29,11 +33,11 @@ export class MyApp {
     platform.ready().then(() => {
       StatusBar.styleDefault();
       Splashscreen.hide();
-
     });
   }
 
-  navegarPara(pagina): void {
+  // Chamado no clique de cada página do menu. Caso não possua página de destino, fará logoff
+  public navegarPara(pagina): void {
     if (!pagina.componente) {
       this.efetuarLogoff();
       return;
@@ -42,7 +46,8 @@ export class MyApp {
     this.nav.push(pagina.componente);
   }
 
-  efetuarLogoff() {
+  // Limpa o cliente gravado e leva usuário para fora
+  private efetuarLogoff() {
     this._service.setClienteLogado(null);
     this.nav.setRoot(LoginPage);
   }

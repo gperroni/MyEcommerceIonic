@@ -10,6 +10,8 @@ import { LoginPage } from '../login/login';
   selector: 'page-visualizarcliente',
   templateUrl: 'visualizarcliente.html'
 })
+// Responsável por exibir dados do cliente logado, assim como redirecionar para 
+// página de alteração e chamar serviço de exclusão
 export class VisualizarClientePage {
 
   private savedCliente: Cliente;
@@ -20,13 +22,17 @@ export class VisualizarClientePage {
     private _serviceCliente: ClienteService,
     private _alertCtrl: AlertController,
     private _loadingCtrl: LoadingController) {
+    // Busca dados do cliente logado e armazenado anteriormente pela classe login-service para exibição na tela
     this.savedCliente = _serviceLogin.getClienteLogado();
   }
 
+  // Redireciona para tela de alteração
   public alterarCadastro() {
     this.navCtrl.push(AlterarClientePage);
   }
 
+  // Exibe popup de confirmação de exclusão. Caso usuário clique em SIM, chama o método para 
+  // efetivar a exclusão; caso clique em NÃO, popup some 
   public confirmacaoExclusao() {
     this._alertCtrl.create({
       subTitle: `Deseja realmente excluir cadastro?`,
@@ -35,18 +41,24 @@ export class VisualizarClientePage {
     }).present();
   }
 
+  // Método chamado ao se clicar em SIM no popup de confirmação de exclusão.
+  // Chama o serviço de cliente responsável por efetuar a exclusão e exibe uma mensagem de confirmação ou erro dependendo do retorno da API
+  // Redireciona para fora do sistema caso exclusão seja confirmada, limpando os dados armazenados do cliente localmente
   public excluirCadastro() {
+    // Feedback para usuário indicando que a exclusão esteja sendo
     let loader = this._loadingCtrl.create({
       content: 'Excluindo cadastro'
     })
     loader.present();
 
+    // Chamada do serviço de exclusão 
     this._serviceCliente
       .excluirCliente(this.savedCliente.cpf)
       .then(() => {
         loader.dismiss();
         this._serviceLogin.setClienteLogado(null);
 
+        // Exibe confirmação de exclusão e redireciona usuário para fora do ecommerce ao clicar em OK
         this._alertCtrl.create({
           title: 'Atenção',
           subTitle: "Cliente excluído com sucesso. Você será redirecionado para fora do e-commerce.",
