@@ -2,7 +2,10 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { LoginService } from '../../models/login-service';
 import { Cliente } from '../../models/cliente';
+import { PaginaEmConstrucaoPage } from '../paginaemconstrucao/paginaemconstrucao';
 
+// Página home do sistema. Poderá ser utilizada para buscas de produtos. 
+// Por enquanto, o clique no ícone apenas levará para a página padrão de "Em construção"
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -15,4 +18,8 @@ export class HomePage {
     private _service: LoginService) {
       this.cliente = _service.getClienteLogado();
   } 
+
+  public buscarProduto(){
+      this.navCtrl.push(PaginaEmConstrucaoPage);
+  }
 }

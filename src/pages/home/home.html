@@ -1,17 +1,20 @@
 <ion-header>
+
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu" id="menu"></ion-icon>
     </button>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <ion-title>Home</ion-title>
   </ion-navbar>
+
 </ion-header>
 
 <ion-content padding>
-
-  <h3>
-    Seja vem vindo {{this.cliente.nome}}
-  </h3>
+  <br>
+  <ion-item>
+    <ion-input type="text" placeholder="Buscar produto"></ion-input>
+    <button ion-button icon-only item-right (click)="buscarProduto()">
+      <ion-icon name="search"></ion-icon>
+    </button>
+  </ion-item>
 </ion-content>

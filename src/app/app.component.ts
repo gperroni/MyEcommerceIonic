@@ -5,6 +5,8 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 import { LoginPage } from '../pages/login/login';
 import { CadastrarClientePage } from '../pages/cadastrarcliente/cadastrarcliente';
 import { VisualizarClientePage } from '../pages/visualizarcliente/visualizarcliente';
+import { HomePage } from '../pages/home/home';
+import { PaginaEmConstrucaoPage } from '../pages/paginaemconstrucao/paginaemconstrucao';
 
 import { LoginService } from '../models/login-service';
 
@@ -20,13 +22,20 @@ export class MyApp {
   // Coloca como página raiz a LoginPage.
   rootPage = LoginPage;
 
-  // Array contendo as páginas do menu
-  // Cada página deverá conter seu nome, página de destino e se usuário deve ou não estar logado para visualizar o item
+  /* 
+      Array contendo as páginas do menu
+      Cada página deverá conter seu nome, página de destino, se será raiz 
+      e se usuário deve ou não estar logado para visualizar o item.
+      Itens não implementados redirecionam para página de "Em construção"
+  */
   public paginas = [
-    { titulo: 'Meus dados', componente: VisualizarClientePage, logado: true },
-    { titulo: 'Realizar cadastro', componente: CadastrarClientePage, logado: false },
-    { titulo: 'Efetuar login', componente: LoginPage, logado: false },
-    { titulo: 'Logoff', logado: true }
+    { titulo: 'Home', componente: HomePage, raiz: true },
+    { titulo: 'Realizar Cadastro', componente: CadastrarClientePage, logado: false, raiz: false },
+    { titulo: 'Efetuar Login', componente: LoginPage, logado: false, raiz: true },
+    { titulo: 'Visualizar Carrinho', componente: PaginaEmConstrucaoPage, raiz: false },
+    { titulo: 'Visualizar Pedidos', componente: PaginaEmConstrucaoPage, logado: true, raiz: false },
+    { titulo: 'Meus Dados', componente: VisualizarClientePage, logado: true, raiz: true },
+    { titulo: 'Logoff', logado: true, raiz: false }
   ]
 
   constructor(platform: Platform, private _service: LoginService) {
@@ -43,7 +52,10 @@ export class MyApp {
       return;
     }
 
-    this.nav.push(pagina.componente);
+    if (pagina.raiz)
+      this.nav.setRoot(pagina.componente);
+    else
+      this.nav.push(pagina.componente);
   }
 
   // Limpa o cliente gravado e leva usuário para fora

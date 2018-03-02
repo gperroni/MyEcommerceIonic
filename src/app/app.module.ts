@@ -14,6 +14,7 @@ import { LoginService } from '../models/login-service';
 import { ClienteService } from '../models/cliente-service';
 
 import { MenuFilterPipe } from '../models/menu-filter.pipe.ts';
+import { PaginaEmConstrucaoPage } from '../pages/paginaemconstrucao/paginaemconstrucao';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MenuFilterPipe } from '../models/menu-filter.pipe.ts';
     CadastrarClientePage,
     MenuFilterPipe,
     VisualizarClientePage,
-    AlterarClientePage
+    AlterarClientePage,
+    PaginaEmConstrucaoPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -35,7 +37,8 @@ import { MenuFilterPipe } from '../models/menu-filter.pipe.ts';
     LoginPage,
     CadastrarClientePage,
     VisualizarClientePage,
-    AlterarClientePage
+    AlterarClientePage,
+    PaginaEmConstrucaoPage
   ],
   providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler },
     LoginService,
