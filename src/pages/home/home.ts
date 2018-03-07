@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { LoginService } from '../../models/login-service';
-import { Cliente } from '../../models/cliente';
+import { LoginService } from '../../services/login-service';
+import { Cliente } from '../../viewmodels/cliente';
 import { PaginaEmConstrucaoPage } from '../paginaemconstrucao/paginaemconstrucao';
 
 // Página home do sistema. Poderá ser utilizada para buscas de produtos. 

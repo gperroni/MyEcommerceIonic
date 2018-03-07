@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
-import { Cliente } from '../../models/cliente';
-import { ClienteService } from '../../models/cliente-service';
+import { Cliente } from '../../viewmodels/cliente';
+import { ClienteService } from '../../services/cliente-service';
 import { LoginPage } from '../login/login';
 
 @Component({

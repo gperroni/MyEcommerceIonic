@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
-import { LoginService } from '../../models/login-service';
+import { LoginService } from '../../services/login-service';
 import { VisualizarClientePage } from '../visualizarcliente/visualizarcliente';
 
 @Component({

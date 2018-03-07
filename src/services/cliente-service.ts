@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Headers } from '@angular/http';
-import { Cliente } from './cliente';
+import { Cliente } from '../viewmodels/cliente';
 
 // Classe responsável por executar ação de CRUD do Cliente
 @Injectable()

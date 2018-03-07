@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { Cliente } from './cliente';
+import { Cliente } from '../viewmodels/cliente';
 import { ClienteService } from './cliente-service';
 
 // Classe responsável por realizar ação de LOGIN e armazenar dados do cliente 

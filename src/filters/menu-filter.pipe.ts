@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { LoginService } from '../models/login-service';
+import { LoginService } from '../services/login-service';
 
 @Pipe({
   name: 'menufilter',

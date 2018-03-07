@@ -10,10 +10,10 @@ import { CadastrarClientePage } from '../pages/cadastrarcliente/cadastrarcliente
 import { VisualizarClientePage } from '../pages/visualizarcliente/visualizarcliente';
 import { AlterarClientePage } from '../pages/alterarcliente/alterarcliente';
 
-import { LoginService } from '../models/login-service';
-import { ClienteService } from '../models/cliente-service';
+import { LoginService } from '../services/login-service';
+import { ClienteService } from '../services/cliente-service';
 
-import { MenuFilterPipe } from '../models/menu-filter.pipe.ts';
+import { MenuFilterPipe } from '../filters/menu-filter.pipe.ts';
 import { PaginaEmConstrucaoPage } from '../pages/paginaemconstrucao/paginaemconstrucao';
 
 @NgModule({

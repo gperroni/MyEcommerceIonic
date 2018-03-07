@@ -8,7 +8,7 @@ import { VisualizarClientePage } from '../pages/visualizarcliente/visualizarclie
 import { HomePage } from '../pages/home/home';
 import { PaginaEmConstrucaoPage } from '../pages/paginaemconstrucao/paginaemconstrucao';
 
-import { LoginService } from '../models/login-service';
+import { LoginService } from '../services/login-service';
 
 @Component({
   templateUrl: 'app.html',
